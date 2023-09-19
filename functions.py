@@ -37,3 +37,38 @@ def validate_penultimate_number(nine_numbers):
     #retorna result
     return result
 
+#Cria função para validar o último numero do cpf
+def validate_last_number(nine_numbers):
+    #Contador regressivo começando em 11
+    countdown = 11
+    #Cria uma lista para armazenar os multiplos dos nove primeiros numeros
+    nine_first_numbers = []
+    #LIsta dos 9 primeiros e o primeiro numero
+    nine_numbers = nine_first()
+    penultible_number = validate_penultimate_number(nine_first())
+    nine_first_numbers_and_first = list(f'{nine_numbers}{penultible_number}')
+    #Lista dos numeros multiplicados pelo contador regressivo
+    nine_numbers_and_first_number_multiple_countdow = []
+
+    #laco for para percorrer e multiplicar   
+    for i in nine_first_numbers_and_first:
+        number_multiplies_by_eleven = int(i)*(countdown)
+        nine_numbers_and_first_number_multiple_countdow.append(number_multiplies_by_eleven)
+        countdown -=1
+
+    #Printa a soma da lista
+    soma_lista = sum(nine_numbers_and_first_number_multiple_countdow)
+
+    #Multiplica o resultado por 10
+    multi_list_for_ten = soma_lista * 10
+
+    #Obtem o resto da divisão da conta anterior por 11
+    div_sum_anterior = multi_list_for_ten % 11
+
+    result = div_sum_anterior if div_sum_anterior <= 9  else 0
+
+    #Retorna o resultado
+    return result
+
+
+#final = 
